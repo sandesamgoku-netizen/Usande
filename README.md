@@ -1,107 +1,95 @@
-  
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Curso de Inglês Online</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Calculadora de Troco</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      width: 300px;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #218838;
+    }
+    .resultado {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Curso de Inglês Online</h1>
-    <nav>
-      <a href="#home">Início</a>
-      <a href="#videos">Vídeo Aulas</a>
-      <a href="#contato">Contato</a>
-    </nav>
-  </header>
+  <div class="container">
+    <h2>Calculadora de Troco</h2>
+    <label>Preço do Produto (R$):</label>
+    <input type="number" id="preco" step="0.01">
+    
+    <label>Valor Pago (R$):</label>
+    <input type="number" id="pago" step="0.01">
+    
+    <button onclick="calcular()">Calcular</button>
+    
+    <div class="resultado" id="resultado"></div>
+  </div>
 
-  <section id="home">
-    <h2>Bem-vindo!</h2>
-    <p>Aprenda inglês de forma prática e divertida com nossas vídeo aulas.</p>
-  </section>
+  <script>
+    function calcular() {
+      let preco = parseFloat(document.getElementById("preco").value);
+      let pago = parseFloat(document.getElementById("pago").value);
+      let resultado = document.getElementById("resultado");
 
-  <section id="videos">
-    <h2>Vídeo Aulas</h2>
-    <!-- Exemplo com vídeo do YouTube -->
-    <div class="video-container">
-      <iframe width="560" height="315" 
-        src="https://www.youtube.com/embed/VIDEO_ID" 
-        title="Video aula de inglês" 
-        frameborder="0" allowfullscreen>
-      </iframe>
-    </div>
+      if (isNaN(preco) || isNaN(pago)) {
+        resultado.innerHTML = "Por favor, insira valores válidos.";
+        return;
+      }
 
-    <!-- Exemplo com vídeo local -->
-    <video width="560" controls>
-      <source src="videoaula.mp4" type="video/mp4">
-      Seu navegador não suporta vídeo.
-    </video>
-  </section>
-
-  <section id="contato">
-    <h2>Contato</h2>
-    <form>
-      <label for="nome">Nome:</label>
-      <input type="text" id="nome" name="nome" required>
-      
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
-      
-      <textarea placeholder="Sua mensagem"></textarea>
-      <button type="submit">Enviar</button>
-    </form>
-  </section>
-
-  <footer>
-    <p>&copy; 2026 Curso de Inglês Online</p>
-  </footer>
+      let troco = pago - preco;
+      if (troco < 0) {
+        resultado.innerHTML = "Valor insuficiente! Faltam R$ " + Math.abs(troco).toFixed(2);
+      } else {
+        resultado.innerHTML = "Troco: R$ " + troco.toFixed(2);
+      }
+    }
+  </script>
 </body>
 </html>
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background: #f4f4f4;
-}
+def calcular_troco(preco, pago):
+    troco = pago - preco
+    if troco < 0:
+        return f"Valor insuficiente! Faltam R$ {abs(troco):.2f}"
+    else:
+        return f"Troco: R$ {troco:.2f}"
 
-header {
-  background: #0044cc;
-  color: white;
-  padding: 15px;
-  text-align: center;
-}
+# Exemplo de uso
+preco = float(input("Digite o preço do produto (R$): "))
+pago = float(input("Digite o valor pago (R$): "))
 
-nav a {
-  color: white;
-  margin: 0 10px;
-  text-decoration: none;
-}
-
-section {
-  padding: 20px;
-  background: white;
-  margin: 20px;
-  border-radius: 8px;
-}
-
-.video-container {
-  margin-bottom: 20px;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-form input, form textarea {
-  margin: 10px 0;
-  padding: 8px;
-}
-
-button {
-  background: #0044cc;
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-}
+print(calcular_troco(preco, pago  
+          
+      
